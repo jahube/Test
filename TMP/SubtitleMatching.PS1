@@ -15,7 +15,9 @@ $FSplit = 'x264' ; $RS = '.720p' ;
 
 #Folder containing full names MODIFY SUBFOLDER + $SFLT (subtitle names) VS $FFLT (FILE names)
 $Names = @(Get-Childitem -LiteralPath "$dir\subfolder" -Filter $SFLT).name
-$NSplit = '.x264.' # Split string Name Template
+
+$NSplit = '.x264.' # Split string (after Title) for above Name Template
+
 $FFN = @(Get-Childitem -LiteralPath $dir -Filter $FFLT).name
 $SRT = @(Get-Childitem -LiteralPath $dir -Filter $SFLT).name
 $SSrc = @() ; $STRGT = @() ; $SSN = @()
@@ -43,6 +45,8 @@ Rename-Item -LiteralPath ("$dir\$SSrc").ToString() "$STRGT"
 Write-Host $SSrc -F Yellow -NoNewline ; Write-Host " $STRGT" -F green }
 
 
+
+
 <#
 # Fix double end after wrong/missing name split string ("264")
 $SRTSrc = @() ; $SRTtarget = @()
@@ -58,7 +62,6 @@ Rename-Item -LiteralPath ("$dir\$SRTSrc").ToString() "$SRTtarget"
 Rename-Item -LiteralPath ("$dir\$MKVSrc").ToString() "$MKVtarget"
 }
 #>
-
 
 
 <#
